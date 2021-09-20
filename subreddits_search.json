@@ -1,0 +1,33 @@
+{
+    "subreddits": {
+        "forhire" : {
+            "link_flair_text": ["Hiring - Open", "Hiring"],
+            "title_tags": ["hiring"]
+        },
+        "freelance_forhire": {
+            "link_flair_text": ["Hiring"],
+            "title_tags": ["hiring"]
+        },
+        "hiring": {
+            "link_flair_text": [],
+            "title_tags": ["hiring"]
+        },
+        "phclassifieds": {
+            "link_flair_text": ["Hiring"],
+            "title_tags": ["LF"]
+        },
+        "slavelabour": {
+            "link_flair_text": ["Task"],
+            "title_tags": ["task"]
+        },
+        "sysadminjobs": {
+            "link_flair_text": [],
+            "title_tags": ["hiring"]
+        },
+        "techjobs": {
+            "link_flair_text": ["HIRING"],
+            "title_tags": []
+        }
+    },
+    "tags": ["web developer", "software", "software developer", "bot", "nodejs", "express", "expressjs", "programmer", "angular", "python", "developer", "full-stack", "dev", "wordpress", "site"]
+}
