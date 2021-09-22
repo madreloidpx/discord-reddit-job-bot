@@ -13,7 +13,7 @@ class PostGetter:
     def __fetchPosts__(self):
         allPosts = None
         for key in self.subreddits:
-            comm = "https://api.pushshift.io/reddit/search/submission/?subreddit="+key+"&sort=desc&sort_type=created_utc&size=10"
+            comm = "https://api.pushshift.io/reddit/search/submission/?subreddit="+key+"&sort=desc&sort_type=created_utc&size=50"
             response = requests.get(comm)
             if allPosts == None:
                 allPosts = response.json()["data"]
@@ -36,15 +36,11 @@ class PostGetter:
                     titleTagCheck = True
                     break
             if flaircheck or titleTagCheck:
-                # print("Scanning...")
-                # rp.printPost()
                 for tag in self.tags:
                     if rp.checkContains(tag):
                         filtered.append(rp)
-                        # rp.printPost()
                         break
         self.__posts__ = filtered
-        # print("new length:", len(self.__posts__))
     def fetchNewPosts(self):
         self.__fetchPosts__()
         self.__filterPosts__()

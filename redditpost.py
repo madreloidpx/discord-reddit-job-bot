@@ -10,4 +10,4 @@ class RedditPost:
             return True
         return False
     def printPost(self):
-        print("["+self.subreddit+":"+self.reddit_id+"]", self.title, "(" + self.url +")")
+        return "["+self.subreddit+":"+self.reddit_id+"]" + " " + self.title + " (" + self.url +")"

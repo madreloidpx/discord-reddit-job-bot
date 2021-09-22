@@ -1,19 +1,22 @@
-import os
-import discord
-import aiocron
+import discord, random, asyncio, os
+from discord.ext import tasks
 from dotenv import load_dotenv
 import postgetter
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+CHANNEL_ID = os.getenv("CHANNEL_ID")
 
 client = discord.Client()
 
-@aiocron.crontab('*/5 * * * *')
-async def getPosts():
-    guild = discord.utils.get(client.guilds, name="madreloid's bots")
-    channel = discord.utils.find(lambda x: x.name == "jobs-bot", guild.text_channels)
-    if channel and channel.permissions_for(guild.me).send_messages:
-        await channel.send(postgetter.PostGetter.fetchNewPosts())
+@tasks.loop(minutes=30.0)
+async def auto_send():
+    channel = await client.fetch_channel(CHANNEL_ID)
+    pg = postgetter.PostGetter()
+    await channel.send(pg.fetchNewPosts())
+
+@client.event
+async def on_ready():
+    auto_send.start()
 
 client.run(TOKEN)
