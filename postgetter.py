@@ -13,7 +13,7 @@ class PostGetter:
     def __fetchPosts__(self):
         allPosts = None
         for key in self.subreddits:
-            comm = "https://api.pushshift.io/reddit/search/submission/?subreddit="+key+"&sort=desc&sort_type=created_utc&size=30"
+            comm = "https://api.pushshift.io/reddit/search/submission/?subreddit="+key+"&sort=desc&sort_type=created_utc&size=10"
             response = requests.get(comm)
             if allPosts == None:
                 allPosts = response.json()["data"]

@@ -9,7 +9,7 @@ CHANNEL_ID = os.getenv("CHANNEL_ID")
 
 client = discord.Client()
 
-@tasks.loop(minutes=30.0)
+@tasks.loop(minutes=15.0)
 async def auto_send():
     channel = await client.fetch_channel(CHANNEL_ID)
     pg = postgetter.PostGetter()
